@@ -85,9 +85,17 @@
     const button = document.querySelector(".btn-js");
     const divs = document.querySelector(".div");
     async function getQuote(params) {
-      const Response = await fetch("https://dummyjson.com/quotes/random");
+     try {
+       const Response = await fetch("https://dummyjson.com/quotes/random");
       const data = await Response.json();
       divs.innerHTML = data.quote;
+     }
+     catch (error) {
+      divs.innerHTML = "Loading"
+      console.log("Qoute getting failed")
+      console.error(error);
+      
+     }
     }
     button.addEventListener("click" , getQuote)
   </script>
