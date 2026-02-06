@@ -84,12 +84,11 @@
   <script>
     const button = document.querySelector(".btn-js");
     const divs = document.querySelector(".div");
-    // console.log(button)
-    const message = ["MUG10", "FREESHIP", "AI_COFFEE_50"];
-    button.addEventListener("click", () => {
-      let randomIndex = Math.floor(Math.random() * message.length);
-      divs.innerText = message[randomIndex];
-      button.style.backgroundColor = "green";
-    });
+    async function getQuote(params) {
+      const Response = await fetch("https://dummyjson.com/quotes/random");
+      const data = await Response.json();
+      divs.innerHTML = data.quote;
+    }
+    addEventListener("click" , getQuote())
   </script>
 </html>
